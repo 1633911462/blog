@@ -148,6 +148,12 @@ mongClient.connect(url,{useNewUrlParser:true},(err,db)=>{
         msgDb.updateOne({'_id':objectId(req.body._id)},{$addToSet:{hf:req.body}})
         res.send('1')
     })
+	
+	// 删除留言
+	app.post('/msgDel',(req,res)=>{
+		msgDb.deleteOne({'_id':objectId(req.body._id)})
+		res.send('1')
+	})
 
 })
 
